@@ -42,9 +42,9 @@ npm i extract-text-webpack-plugin style-loader url-loader file-loader css-loader
 
 * Install dependencies development Jest 
 ```
-npm i babel-jest jet -D
+npm i babel-jest jest -D
 ``` 
 * Install dependencies Jest 
 ```
-npm i exios -S
+npm i axios -S
 ``` 
