@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jsnavarroc/initial-proyect-react-default.git"
+    "url": "git+https://github.com/jsnavarroc/notesjsn.git"
   },
   "keywords": [
     "react",
@@ -42,8 +42,10 @@
   },
   "dependencies": {
     "axios": "^0.17.1",
+    "material-ui": "^0.20.0",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react-dom": "^16.2.0",
+    "react-flexbox-grid": "^2.0.0"
   },
   "jest": {
     "testEnvironment": "node"

@@ -62,7 +62,7 @@ module.exports = {
     "react/jsx-closing-bracket-location": 1,
     // only add spaces inside object def curlies, not jsx curlies
     "react/jsx-curly-spacing": [1, "never"],
-    "react/jsx-indent-props": [1, "tab"],
+    "react/jsx-indent-props": [0, "tab"],
     "react/jsx-no-duplicate-props": 2,
     // don't mark `React` as unused
     "react/jsx-uses-react": 1,

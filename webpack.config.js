@@ -10,7 +10,7 @@ const DEBUG = process.env.NODE_ENV !== 'production';
 const APP_FOLDER = path.resolve(__dirname, './app');
 // > Dist
 const DIST_FOLDER = path.resolve(APP_FOLDER, './dist');
-const DIST_FOLDER_STYLE = path.resolve(DIST_FOLDER, './style');
+const DIST_FOLDER_STYLE = path.resolve(DIST_FOLDER, './scss');
 
 const DIST_FILE_JS_BUNDLE = 'js/bundle.js';
 const DIST_FILE_CSS_BUNDLE_NAME = 'bundle.css';
