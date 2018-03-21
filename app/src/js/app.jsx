@@ -1,12 +1,17 @@
 // Dependencies
 import React, { Component } from 'react';
 import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+
+// Responsive Web
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Grid } from 'react-flexbox-grid';
 import '../scss/index.scss';
 
-// Components
-import NoteApp from './NoteApp';
+// Components Container
+import RoutesPage from './RoutesPage';
+// Store
+import  { store } from './store';
 
 class App extends Component {
     constructor(props) {
@@ -17,11 +22,15 @@ class App extends Component {
          return(
             <MuiThemeProvider>
                 <Grid>
-                    <NoteApp/>
+                    <RoutesPage/>
                 </Grid>
             </MuiThemeProvider>
         );
     }
 }
-
-render(<App />, document.getElementById('app'));
+const rootComponent = (
+    <Provider store = {store}>
+        <App />
+    </Provider>
+);
+render(rootComponent, document.getElementById('app'));

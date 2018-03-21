@@ -12,37 +12,46 @@ class Nav extends Component {
 		open: false,
 	};
 	DialogModalShow () {
-		return(<DialogModal open = {true} />);
+		return(<DialogModal open = {true} handleClose = {this.handleClose} />);
 	}
+
+	handleClose = () => {
+        this.setState({ open: false });
+	};
 
 	handleOpen = () => {
 		this.setState({ open: true });
 	};
+
+	addButton = () => {
+		const style = {
+			margin: 12,
+		};
+		const { open } = this.state;
+		return(
+			<RaisedButton
+				backgroundColor="#2ECC71"
+				icon={<NoteAdd color={fullWhite} />}
+				style={style}
+				onClick={() => this.handleOpen()}
+			>
+			{open? this.DialogModalShow(): null}
+			</RaisedButton>
+		);
+	}
 	render() {
 		const styles = {
 			title: {
 				cursor: 'pointer',
 			},
 		};
-		const style = {
-			margin: 12,
-		};
-		const { open } = this.state;
+
 		return (
 				<div >
 					<AppBar
 						className="scssNav"
 						title={<span style={styles.title}>Note JSN</span>}
-						iconElementRight={
-							<RaisedButton
-								backgroundColor="#2ECC71"
-								icon={<NoteAdd color={fullWhite} />}
-								style={style}
-								onClick={() => this.handleOpen()}
-							>
-							{open? this.DialogModalShow(): null}
-							</RaisedButton>
-						}
+						iconElementRight={this.addButton()}
 					/>
 			</div>
 		);

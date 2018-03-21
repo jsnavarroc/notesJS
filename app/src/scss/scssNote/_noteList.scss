@@ -3,11 +3,11 @@
 }
 .scssWhite {
     background-color: $light-gray ;
-    height: 90vh;
+    height: 89vh;
 }
 
 .boxListNote{
-    margin-top: 2%;
+    margin-top: 0.3%;
     height: 90%;
     overflow: auto;
     overflow-x:hidden;
@@ -23,13 +23,13 @@
     box-shadow: $box-shadow;
 }
 
-.Delete{
+.Butons{
     position: relative;
-    left: 90%;
+    left: 80%;
     top:-20px;
-    width: 0px;
-    margin: 0px 0px 0px 0px;
+    margin: 0px 0px 20px 0px;
     z-index: 900;
+    display: inline;
 }
 
 .noteContentText{

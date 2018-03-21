@@ -5,15 +5,12 @@ import PropTypes from 'prop-types';
 // Component Partial
 import Botuns from './Partials/Botuns';
 
-const Note = ({ noteText, noteTitle, idNote }) => {
+const Note = ({ noteText, noteTitle, idNote, handleSelector  }) => {
 
-    const handleRemove = (idNote) => {
-        console.log(idNote);
-    };
     return (
         <div className="ContentNote">
 
-            <div className = "Delete" onClick = {() => handleRemove(idNote) }>
+            <div className = "Butons" onClick = {() => handleSelector(idNote)}>
                 <Botuns/>
             </div>
             <div className="noteContentText">

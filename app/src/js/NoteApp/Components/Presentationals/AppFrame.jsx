@@ -1,17 +1,19 @@
 // Dependencies
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // Partials Components
-import Nav from './Components/Common/Nav';
-import NoteList from './Components/NoteList';
-
-const Note = () => {
+import Nav from './Common/Nav.jsx';
+const Note = ({ body }) => {
     return (
         <div className = "scssShadow">
            <Nav/>
-           <NoteList/>
+           {body}
         </div>
     );
+};
+Note.propTypes = {
+    body: PropTypes.element.isRequired,
 };
 
 export default Note;
