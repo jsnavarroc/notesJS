@@ -11,7 +11,7 @@ import '../scss/index.scss';
 // Components Container
 import RoutesPage from './RoutesPage';
 // Store
-import  { store } from './store';
+import  { store } from './redux/store';
 
 class App extends Component {
     constructor(props) {

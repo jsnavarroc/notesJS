@@ -1,13 +1,15 @@
 // Dependencies
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 // Components Containers
 import NoteListContainer from './NoteApp/Components/Containers/NoteListContainer';
+import EditNoteContainer from './NoteApp/Components/Containers/editNoteContainer';
+import DeleteNoteContainer from './NoteApp/Components/Containers/DeleteNoteContainer';
 
 class RoutesPage extends Component {
   rederNoteList = () => <NoteListContainer/>
-  renderCustomersContainer = () => <div><h1>Customers Container</h1></div>
-  renderCustomerNewContainer = () => (  <div className = "scssShadow" style = {{  background: 'white' }}><Link to ="/"><h1>Customer New Container</h1></Link></div>)
+   renderNotesContainer= (props) => ( <EditNoteContainer idNote={props.match.params.userId}/>)
+   renderNoteDeleteContainer = () => (<DeleteNoteContainer/>)
   rederError = () => <h1>Error404</h1>
 
   render() {
@@ -16,8 +18,8 @@ class RoutesPage extends Component {
         <Router>
             <Switch>
                 <Route exact path = "/" component = {this.rederNoteList}/>
-                <Route path = "/customers/:dni" component = {this.renderCustomersContainer}/>
-                <Route path = "/note/new" component = {this.renderCustomerNewContainer}/>
+                <Route path = "/note/edit/:idNote" render = {(props) => this.renderNotesContainer(props)}/>
+                <Route path = "/note/delete/:idNote" component = {this.renderNoteDeleteContainer}/>
                 <Route component = {this.rederError}/>
             </Switch>
         </Router>

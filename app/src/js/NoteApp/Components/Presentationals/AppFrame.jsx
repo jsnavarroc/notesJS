@@ -2,12 +2,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// Partials Components
-import Nav from './Common/Nav.jsx';
-const Note = ({ body }) => {
+const Note = ({ body, nav }) => {
     return (
         <div className = "scssShadow">
-           <Nav/>
+           {nav}
            {body}
         </div>
     );

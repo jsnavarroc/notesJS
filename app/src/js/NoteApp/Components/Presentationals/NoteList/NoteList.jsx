@@ -11,9 +11,6 @@ const NoteList = ({ notes, onSelectionNote }) => {
 	return (
 		<Grid className = "scssWhite">
 			<div className="boxListNote">
-				<Link to ="/note/new">hola</Link>
-				{console.log('notes>>', notes)
-				}
 				<Row around="lg">
 				{
 					notes.map((colNote, id) => (
@@ -40,7 +37,6 @@ const NoteList = ({ notes, onSelectionNote }) => {
 NoteList.propTypes = {
     notes:PropTypes.array.isRequired,
 	onSelectionNote: PropTypes.func.isRequired,
-	urlPath: PropTypes.string.isRequired,
 };
 
 export default NoteList;

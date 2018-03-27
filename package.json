@@ -56,6 +56,7 @@
   },
   "scripts": {
     "build": "webpack --config webpack.config.js",
+    "api": "json-server --watch notes.json --port 3003",
     "prod": "SET NODE_ENV=production & npm run build",
     "start": "webpack-dev-server --watch --hot",
     "test": "jest",

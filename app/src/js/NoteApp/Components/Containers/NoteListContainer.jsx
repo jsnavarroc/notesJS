@@ -7,8 +7,11 @@ import { connect } from 'react-redux';
 // Presentationals
 import NoteList from '../Presentationals/NoteList/NoteList';
 import AppFrame from '../Presentationals/AppFrame';
+// Common Component
+import Nav from '../Presentationals/Common/Nav';
+import AddNoteButton from '../Presentationals/addNotes/AddNoteButton';
 // Actions
-import { fetchNotes } from '../../../actions/fetchNotes';
+import { fetchNotes } from '../../../redux/actions/fetchNotes';
 
 class NoteListContainer extends Component {
     componentDidMount() {
@@ -33,12 +36,18 @@ class NoteListContainer extends Component {
         return NotesTotal;
 
     }
+    renderAddNoteAction = () => ( <AddNoteButton/> )
+
+    renderNav = (addNote) => (
+        <div>
+            <Nav addNote = {addNote}/>
+        </div>
+    )
 
     renderBody = (notes) => (
         <div>
             <NoteList
                 notes={this.onTransformNotes(notes)}
-                urlPath="notes/"
                 onSelectionNote = {this.onSelectionNote}
             />
         </div>
@@ -47,7 +56,10 @@ class NoteListContainer extends Component {
     render() {
         const { notes } = this.props;
         return (
-           <AppFrame body= {this.renderBody(notes)} />
+           <AppFrame
+            body= {this.renderBody(notes)}
+            nav= {this.renderNav(this.renderAddNoteAction)}
+           />
         );
     }
 }

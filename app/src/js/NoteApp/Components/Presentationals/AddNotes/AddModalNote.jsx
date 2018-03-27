@@ -3,7 +3,7 @@ import FlatButton from 'material-ui/FlatButton';
 import Dialog from 'material-ui/Dialog';
 import TextField from 'material-ui/TextField';
 
-class DialogModal extends Component {
+class AddModalNote extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -50,4 +50,5 @@ class DialogModal extends Component {
 }
 }
 
-export default DialogModal;
+export default AddModalNote;
+// Componente modal para agregar notas.
