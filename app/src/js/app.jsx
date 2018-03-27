@@ -1,27 +1,36 @@
 // Dependencies
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-import '../style/index.scss';
+import { Provider } from 'react-redux';
 
-// Components
-import ComponentA from './ComponentA';
-import ComponentB from './ComponentB';
+// Responsive Web
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import { Grid } from 'react-flexbox-grid';
+import '../scss/index.scss';
 
+// Components Container
+import RoutesPage from './RoutesPage';
+// Store
+import  { store } from './redux/store';
 
 class App extends Component {
-    constructor(props){
-        super(props)
+    constructor(props) {
+        super(props);
     }
 
-    render(){
-         return(        
-            <div>
-                <h1>Hello World</h1>
-                <ComponentA />
-                <ComponentB />
-            </div>         
-        )
+    render() {
+         return(
+            <MuiThemeProvider>
+                <Grid>
+                    <RoutesPage/>
+                </Grid>
+            </MuiThemeProvider>
+        );
     }
 }
-
-render(<App />, document.getElementById('app'));
+const rootComponent = (
+    <Provider store = {store}>
+        <App />
+    </Provider>
+);
+render(rootComponent, document.getElementById('app'));

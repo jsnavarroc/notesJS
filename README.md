@@ -14,6 +14,10 @@ my-app/
        index.scss
  index.html
 webpackage.config.js
+.babelrc
+.eslintignore
+.eslintrc.js
+.gitignore
 pakage.json
 README.md
 ```
@@ -22,6 +26,9 @@ README.md
 ```
 npm init
 ```
+
+## If required config components
+
 
 * Install dependencies development:
 
@@ -42,9 +49,14 @@ npm i extract-text-webpack-plugin style-loader url-loader file-loader css-loader
 
 * Install dependencies development Jest 
 ```
-npm i babel-jest jet -D
+npm i babel-jest jest -D
 ``` 
 * Install dependencies Jest 
 ```
-npm i exios -S
+npm i axios -S
+``` 
+* Install dependencies Eslint only Visual Studio Code for Atom and Sublime is different ¡Alert!
+```
+>> eslint --init 
+>> npm i eslint babel-eslint -D
 ``` 
