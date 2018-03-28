@@ -12,6 +12,8 @@ import Nav from '../Presentationals/Common/Nav';
 import AddNoteButton from '../Presentationals/addNotes/AddNoteButton';
 // Actions
 import { fetchNotes } from '../../../redux/actions/fetchNotes';
+// Selector
+import { getNotes } from '../../../redux/selectors/notes';
 
 class NoteListContainer extends Component {
     componentDidMount() {
@@ -76,7 +78,7 @@ const mapDispatchToProps = { fetchNotes };
 
 const mapStateToProps = (state) => (
     {
-        notes: state.notes,
+        notes: getNotes(state),
     }
 );
 const NoteListConect = connect(mapStateToProps, mapDispatchToProps)(NoteListContainer);

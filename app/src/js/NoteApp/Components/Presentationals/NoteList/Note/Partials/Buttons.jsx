@@ -2,27 +2,26 @@ import React from 'react';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/action/delete';
 import ContentUpdate from 'material-ui/svg-icons/action/update';
-import { withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 const style = {
     marginRight: 20,
   };
-const  handleOnClickAdd = (idNote, history) => {
-    history.push(`/note/edit/${idNote}`);
-};
-const  handleOnClickDelet = (idNote, history) => {
-    history.push(`/note/delete/${idNote}`);
-};
+
 const Buttons = ({ idNote, history }) => {
     return(
         <div>
-            <FloatingActionButton mini={true} style={style} backgroundColor = "#34495E" onClick = {() => handleOnClickAdd(idNote, history)}>
-                <ContentUpdate />
-            </FloatingActionButton>
-            <FloatingActionButton mini={true} style={style} backgroundColor = "#2ECC71"  onClick = {() => handleOnClickDelet(idNote, history)}>
-                <ContentAdd />
-            </FloatingActionButton>
+            <Link to={`/note/${idNote}/edit`}>
+                <FloatingActionButton mini={true} style={style} backgroundColor = "#34495E" >
+                    <ContentUpdate />
+                </FloatingActionButton>
+            </Link>
+            <Link to={`/note/${idNote}/delet`}>
+                <FloatingActionButton mini={true} style={style} backgroundColor = "#2ECC71">
+                    <ContentAdd />
+                </FloatingActionButton>
+            </Link>
         </div>
 
     );};
 
-export default withRouter(Buttons);
+export default Buttons;
