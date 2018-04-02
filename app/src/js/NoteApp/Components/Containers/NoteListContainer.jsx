@@ -76,10 +76,12 @@ NoteListContainer.defaultProps = {
 };
 const mapDispatchToProps = { fetchNotes };
 
-const mapStateToProps = (state) => (
-    {
-        notes: getNotes(state),
-    }
-);
+const mapStateToProps = (state) => {
+   return (
+        {
+            notes: getNotes(state),
+        }
+    );
+};
 const NoteListConect = connect(mapStateToProps, mapDispatchToProps)(NoteListContainer);
 export default withRouter(NoteListConect);

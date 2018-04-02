@@ -1,36 +1,30 @@
 // Dependencies
 import React, { Component } from 'react';
-import { render } from 'react-dom';
-import { Provider } from 'react-redux';
-
-// Responsive Web
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import { Grid } from 'react-flexbox-grid';
-import '../scss/index.scss';
-
-// Components Container
-import RoutesPage from './RoutesPage';
-// Store
-import  { store } from './redux/store';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+// Components Containers
+import HomeContainer from './NoteApp/Components/Containers/HomeContainer';
+import NoteListContainer from './NoteApp/Components/Containers/NoteListContainer';
+import CustomerNoteContainer from './NoteApp/Components/Containers/CustomerNoteContainer';
 
 class App extends Component {
-    constructor(props) {
-        super(props);
-    }
+  rederHome = () => <HomeContainer/>
+  rederNoteList = () => <NoteListContainer/>
+  renderNotesContainer= (props) => ( <CustomerNoteContainer idNote={props.match.params.idNote}/>)
+  rederError = () => <h1>Error404</h1>
 
-    render() {
-         return(
-            <MuiThemeProvider>
-                <Grid>
-                    <RoutesPage/>
-                </Grid>
-            </MuiThemeProvider>
-        );
-    }
+  render() {
+
+    return (
+        <Router>
+            <Switch>
+                <Route exact path = "/home" component = {this.rederHome}/>
+                <Route exact path = "/" component = {this.rederNoteList}/>
+                <Route path = "/note/:idNote" render = {(props) => this.renderNotesContainer(props)}/>
+                <Route component = {this.rederError}/>
+            </Switch>
+        </Router>
+    );
+  }
 }
-const rootComponent = (
-    <Provider store = {store}>
-        <App />
-    </Provider>
-);
-render(rootComponent, document.getElementById('app'));
+
+export default App;
