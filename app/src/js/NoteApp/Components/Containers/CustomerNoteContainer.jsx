@@ -19,24 +19,30 @@ class CustomerNoteContainer extends Component {
     componentDidMount() {
         this.props.fetchNotes();
     }
-    renderBody = () => (
-            <Route
-                path="/note/:idNote/edit"
-                children={
-                    ({ match }) => {
-                        const NoteControl =  match? NoteEdit :NoteData;
-                        return <NoteControl {...this.props.note}/>;
+    renderBody = (note) => {
+        if(note.idNote !== undefined ) {
+            return(
+                <Route
+                    path="/note/:idNote/edit"
+                    children={
+
+                        ({ match }) => {
+                            const NoteControl =  match? NoteEdit :NoteData;
+                            return <NoteControl {...note}/>;
+                        }
                     }
-                }
-            />
-    );
+                />
+        );
+    }
+};
 
     render() {
+        const { note } = this.props;
         return (
-           <AppFrame
-            body= {this.renderBody()}
-            nav= {<Nav/>}
-           />
+            <AppFrame
+                body= {this.renderBody(note)}
+                nav= {<Nav/>}
+            />
         );
     }
 }
@@ -52,13 +58,13 @@ CustomerNoteContainer.defaultProps = {
 const mapDispatchToProps = { fetchNotes };
 
 const mapStateToProps = (state, props) => {
-    console.log('state>>>', state);
-
-    return(
-        {
-            note: getCustomerByIdNote(state, props),
-        }
-    );
+    if(state.notes.length>0) {
+        return(
+            {
+                note: getCustomerByIdNote(state, props),
+            }
+        );
+    }
 };
 const EditNoteConect = connect(mapStateToProps, mapDispatchToProps)(CustomerNoteContainer);
 

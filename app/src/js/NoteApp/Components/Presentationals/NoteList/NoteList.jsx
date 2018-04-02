@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 //Components Partials
 import Note from './Note';
 
-const NoteList = ({ notes, onSelectionNote }) => {
+const NoteList = ({ notes }) => {
 	return (
 		<Grid className = "scssWhite">
 			<div className="boxListNote">
@@ -17,8 +17,7 @@ const NoteList = ({ notes, onSelectionNote }) => {
 						<Col lg={5} key = {id}>
 						{
 							colNote.map( note => (
-								<Note handleSelector={onSelectionNote}
-										key={note.idNote}
+								<Note	key={note.idNote}
 										idNote={note.idNote}
 										noteTitle= {note.noteTitle}
 										noteText = {note.noteText}
@@ -36,7 +35,6 @@ const NoteList = ({ notes, onSelectionNote }) => {
 
 NoteList.propTypes = {
     notes:PropTypes.array.isRequired,
-	onSelectionNote: PropTypes.func.isRequired,
 };
 
 export default NoteList;

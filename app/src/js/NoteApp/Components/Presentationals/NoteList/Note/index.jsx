@@ -5,11 +5,11 @@ import { Link } from 'react-router-dom';
 // Component Partial
 import Buttons from './Partials/Buttons';
 
-const Note = ({ noteText, noteTitle, idNote, handleSelector }) => {
+const Note = ({ noteText, noteTitle, idNote }) => {
     return (
         <div className="ContentNote">
 
-            <div className = "Butons" onClick = {() => handleSelector(idNote)}>
+            <div className = "Butons">
                 <Buttons idNote={idNote}/>
             </div>
             <div className="noteContentText">
