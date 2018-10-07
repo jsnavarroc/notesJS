@@ -1,1 +1,2 @@
 export const FETCH_NOTES = 'FETCH_NOTES';
+export const INSERT_CUSTOMER = 'INSERT_CUSTOMER';

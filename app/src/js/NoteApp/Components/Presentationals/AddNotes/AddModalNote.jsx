@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import FlatButton from 'material-ui/FlatButton';
 import Dialog from 'material-ui/Dialog';
-import TextField from 'material-ui/TextField';
-
+import NoteForm from './NoteForm.jsx';
+import { SubmissionError } from 'redux-form';
 class AddModalNote extends Component {
     constructor(props) {
         super(props);
@@ -12,17 +12,25 @@ class AddModalNote extends Component {
     }
 
     render() {
+       const { handleClose } =  this.props;
+       const  handleSubmit = values => {
+                return this.props.insertCustomer(values).then( r => {
+                    if (r.error) {
+                        throw new SubmissionError(r.payload);
+                    }
+                });
+        };
         const actions = [
 			<FlatButton
 				label="Cancel"
 				primary={true}
-				onClick={this.props.handleClose}
+				onClick={handleClose}
 			/>,
 			<FlatButton
 				label="Add"
 				primary={true}
 				keyboardFocused={true}
-				onClick={this.props.handleClose}
+				onClick={handleClose}
 			/>,
          ];
         return (
@@ -32,18 +40,11 @@ class AddModalNote extends Component {
                     actions={actions}
                     modal={false}
                     open={this.state.open}
-                    onRequestClose={this.props.handleClose}
+                    onRequestClose={handleClose}
                 >
                         Create a new note<br />
                     {/*FORMULARIO !!!  */}
-                    <TextField
-                        hintText="Input Text"
-                        errorText="This field is required."
-                        multiLine={true}
-                        rows={2}
-                        rowsMax={4}
-                    /><br />
-
+                    <NoteForm onSubmit={handleSubmit} />
                 </Dialog>
             </div>
         );

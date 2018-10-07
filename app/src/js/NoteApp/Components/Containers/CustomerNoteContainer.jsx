@@ -6,7 +6,8 @@ import { connect } from 'react-redux';
 import  { Route } from 'react-router-dom';
 // Presentationals
 import AppFrame from '../Presentationals/AppFrame';
-import NoteEdit from '../Presentationals/NoteEdit';
+// import NoteEdit from '../Presentationals/NoteEdit';
+import NoteForm from '../Presentationals/AddNotes/NoteForm.jsx';
 import NoteData from '../Presentationals/NoteData';
 // Common Component
 import Nav from '../Presentationals/Common/Nav';
@@ -27,7 +28,7 @@ class CustomerNoteContainer extends Component {
                     children={
 
                         ({ match }) => {
-                            const NoteControl =  match? NoteEdit :NoteData;
+                            const NoteControl =  match? NoteForm :NoteData;
                             return <NoteControl {...note}/>;
                         }
                     }
