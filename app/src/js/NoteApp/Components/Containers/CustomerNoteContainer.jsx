@@ -33,16 +33,24 @@ class CustomerNoteContainer extends Component {
                         }
                     }
                 />
-        );
-    }
-};
+            );
+        }
+    };
+
+    renderNav= (note) => {
+        if(note !== undefined ) {
+            return(
+                <Nav  {...note}/>
+            );
+        }
+    };
 
     render() {
         const { note } = this.props;
         return (
             <AppFrame
                 body= {this.renderBody(note)}
-                nav= {<Nav/>}
+                nav= {this.renderNav(note)}
             />
         );
     }

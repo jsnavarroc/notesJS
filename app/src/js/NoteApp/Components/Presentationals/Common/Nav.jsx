@@ -12,13 +12,13 @@ const styles = {
 const returnHome = (history, location) => {
 	(location!=='/')?  history.push('/'): null;
 };
-const Nav = ({ addNote, history, location }) => {
+const Nav = ({ history, location, notes, addNote }) => {
     return (
         <div>
 				<AppBar
 				className="scssNav"
 				title={<span  style={styles.title} onClick={() => returnHome(history, location.pathname)}>Note JSN</span>}
-				iconElementRight={addNote? addNote(): null}
+				iconElementRight={addNote? addNote(notes): null}
 				/>
         </div>
     );

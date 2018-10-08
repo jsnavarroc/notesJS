@@ -59,8 +59,8 @@ class NoteListContainer extends Component {
         const { notes } = this.props;
         return (
            <AppFrame
-            body= {this.renderBody(notes)}
             nav= {this.renderNav(this.renderAddNoteAction)}
+            body= {this.renderBody(notes)}
            />
         );
     }
@@ -71,9 +71,9 @@ NoteListContainer.propTypes = {
     notes: PropTypes.array.isRequired,
 };
 
-NoteListContainer.defaultProps = {
-    notes: [],
-};
+// NoteListContainer.defaultProps = {
+//     notes: [],
+// };
 const mapDispatchToProps = { fetchNotes };
 
 const mapStateToProps = (state) => {

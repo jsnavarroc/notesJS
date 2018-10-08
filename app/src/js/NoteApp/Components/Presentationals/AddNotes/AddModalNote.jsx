@@ -3,6 +3,15 @@ import FlatButton from 'material-ui/FlatButton';
 import Dialog from 'material-ui/Dialog';
 import NoteForm from './NoteForm.jsx';
 import { SubmissionError } from 'redux-form';
+import PropTypes from 'prop-types';
+
+import { connect } from 'react-redux';
+// Actions
+// import { insertNotes } from '../../../../redux/actions/insertNotes';
+import { fetchNotes } from '../../../../redux/actions/fetchNotes';
+// Selector
+import { getNotes } from '../../../../redux/selectors/notes';
+
 class AddModalNote extends Component {
     constructor(props) {
         super(props);
@@ -10,16 +19,21 @@ class AddModalNote extends Component {
             open: props.open,
         };
     }
+    componentDidMount() {
+        this.props.fetchNotes();
+    }
+    handleSubmit = values => {
+        const { totaNotes } =  this.props;
+        values = { ...values, idNote:(totaNotes+1) };
+             return this.props.insertNotes(values).then( r => {
+                 if (r.error) {
+                     throw new SubmissionError(r.payload);
+                 }
+             });
+    };
 
     render() {
        const { handleClose } =  this.props;
-       const  handleSubmit = values => {
-                return this.props.insertCustomer(values).then( r => {
-                    if (r.error) {
-                        throw new SubmissionError(r.payload);
-                    }
-                });
-        };
         const actions = [
 			<FlatButton
 				label="Cancel"
@@ -44,12 +58,26 @@ class AddModalNote extends Component {
                 >
                         Create a new note<br />
                     {/*FORMULARIO !!!  */}
-                    <NoteForm onSubmit={handleSubmit} />
+                    <NoteForm onSubmit={this.handleSubmit} />
                 </Dialog>
             </div>
         );
 }
 }
 
-export default AddModalNote;
+AddModalNote.propTypes = {
+    insertNotes: PropTypes.func.isRequired,
+    fetchNotes: PropTypes.func.isRequired,
+    notes: PropTypes.array.isRequired,
+};
+
+const mapStateToProps = (state) => {
+    return (
+         {
+             notes: getNotes(state),
+         }
+     );
+ };
+const AddModalNoteConect = connect(mapStateToProps, { fetchNotes })(AddModalNote);
+export default AddModalNoteConect;
 // Componente modal para agregar notas.
