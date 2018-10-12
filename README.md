@@ -57,6 +57,6 @@ npm i axios -S
 ``` 
 * Install dependencies Eslint only Visual Studio Code for Atom and Sublime is different ¡Alert!
 ```
-  `eslint --init` 
-  `npm i eslint babel-eslint -D`
+  eslint --init` 
+  npm i eslint babel-eslint -D`
 ``` 
