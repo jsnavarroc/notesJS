@@ -11,7 +11,7 @@ const Note = ({ body, nav }) => {
     );
 };
 Note.propTypes = {
-    body: PropTypes.element.isRequired,
+    body: PropTypes.element,
 };
 
 export default Note;

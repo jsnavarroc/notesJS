@@ -2,7 +2,6 @@
 import React from 'react';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
 //Components Partials
 import Note from './Note';
@@ -34,7 +33,7 @@ const NoteList = ({ notes }) => {
 };
 
 NoteList.propTypes = {
-    notes:PropTypes.array.isRequired,
+    notes:PropTypes.array,
 };
 
 export default NoteList;

@@ -25,8 +25,8 @@ const Note = ({ noteText, noteTitle, idNote }) => {
 };
 
 Note.defaultPropTypes = {
-    noteText : PropTypes.string.isRequired,
-    noteTitle : PropTypes.string.isRequired,
-    idNote : PropTypes.number.isRequired,
+    noteText : PropTypes.string,
+    noteTitle : PropTypes.string,
+    idNote : PropTypes.number,
 };
 export default Note;

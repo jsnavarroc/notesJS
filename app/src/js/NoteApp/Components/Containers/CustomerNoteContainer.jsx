@@ -57,9 +57,9 @@ class CustomerNoteContainer extends Component {
 }
 
 CustomerNoteContainer.propTypes = {
-    idNote: PropTypes.string.isRequired,
-    fetchNotes: PropTypes.func.isRequired,
-    note: PropTypes.object.isRequired,
+    idNote: PropTypes.string,
+    fetchNotes: PropTypes.func,
+    note: PropTypes.object,
 };
 CustomerNoteContainer.defaultProps = {
     note: {},

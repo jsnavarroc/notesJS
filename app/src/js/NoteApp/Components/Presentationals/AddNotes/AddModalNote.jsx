@@ -66,9 +66,9 @@ class AddModalNote extends Component {
 }
 
 AddModalNote.propTypes = {
-    insertNotes: PropTypes.func.isRequired,
-    fetchNotes: PropTypes.func.isRequired,
-    notes: PropTypes.array.isRequired,
+    insertNotes: PropTypes.func,
+    fetchNotes: PropTypes.func,
+    notes: PropTypes.array,
 };
 
 const mapStateToProps = (state) => {

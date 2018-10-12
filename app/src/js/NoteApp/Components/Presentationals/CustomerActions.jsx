@@ -12,7 +12,7 @@ const CustomerActions = ({ children }) => {
 };
 
 CustomerActions.propTypes = {
-    children: PropTypes.element.isRequired,
+    children: PropTypes.element,
 };
 
 export default CustomerActions;
