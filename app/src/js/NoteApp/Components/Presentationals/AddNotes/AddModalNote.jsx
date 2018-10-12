@@ -19,9 +19,7 @@ class AddModalNote extends Component {
             open: props.open,
         };
     }
-    componentDidMount() {
-        this.props.fetchNotes();
-    }
+    
     handleSubmit = values => {
         const { totaNotes } =  this.props;
         values = { ...values, idNote:(totaNotes+1) };

@@ -11,14 +11,15 @@ import AppFrame from '../Presentationals/AppFrame';
 import Nav from '../Presentationals/Common/Nav';
 import AddNoteButton from '../Presentationals/addNotes/AddNoteButton';
 // Actions
-import { fetchNotes, fetchNotesAux } from '../../../redux/actions/fetchNotes';
+import { fetchNotes } from '../../../redux/actions/fetchNotes';
 // Selector
 import { getNotes } from '../../../redux/selectors/notes';
-import { getNoteAux } from '../../../redux/selectors/notesAux';
 
 class NoteListContainer extends Component {
     componentDidMount() {
-        this.props.fetchNotesAux();
+        if (this.props.notes.length === 0) {
+            this.props.fetchNotes();
+        }
     }
     onSelectionNote(idNote) {
         console.log('ID NOTA:', idNote);
@@ -76,10 +77,10 @@ NoteListContainer.defaultProps = {
     notes: [],
 };
 
-const mapDispatchToProps = { fetchNotesAux };
+const mapDispatchToProps = { fetchNotes };
 
 const mapStateToProps = (state) => ({
-    notes: getNoteAux(state),
+    notes: getNotes(state),
 });
 
 const NoteListConect = connect(mapStateToProps, mapDispatchToProps)(NoteListContainer);
