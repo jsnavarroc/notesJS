@@ -15,7 +15,7 @@ const NoteData = ({ noteTitle, noteText }) => {
 NoteData.propTypes = {
     noteTitle: PropTypes.string,
     noteText: PropTypes.string,
-    idNote: PropTypes.string,
+    id: PropTypes.string,
 };
 
 export default NoteData;

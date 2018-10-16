@@ -21,8 +21,8 @@ class NoteListContainer extends Component {
             this.props.fetchNotes();
         }
     }
-    onSelectionNote(idNote) {
-        console.log('ID NOTA:', idNote);
+    onSelectionNote(id) {
+        console.log('ID NOTA:', id);
 
     }
     onTransformNotes(notes) {

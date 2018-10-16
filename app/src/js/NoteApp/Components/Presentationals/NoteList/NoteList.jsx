@@ -16,8 +16,8 @@ const NoteList = ({ notes }) => {
 						<Col lg={5} key = {id}>
 						{
 							colNote.map( note => (
-								<Note	key={note.idNote}
-										idNote={note.idNote}
+								<Note	key={note.id}
+										id={note.id}
 										noteTitle= {note.noteTitle}
 										noteText = {note.noteText}
 								/>

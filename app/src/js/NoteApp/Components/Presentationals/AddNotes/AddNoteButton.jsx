@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import RaisedButton from 'material-ui/RaisedButton';
+import { RaisedButton } from 'material-ui';
 import { fullWhite } from 'material-ui/styles/colors';
 import NoteAdd from 'material-ui/svg-icons/action/note-add';
 import AddModalNote from './AddModalNote';
@@ -11,7 +11,7 @@ class AddNoteButton extends Component {
     };
 
 	DialogModalShow () {
-		return(<AddModalNote open = {true} handleClose = {this.handleClose}  handleSubmit = {this.handleSubmit}  />);
+		return(<AddModalNote open={true} handleClose={this.handleClose}  handleSubmit={this.handleSubmit}  />);
     }
 
 	handleClose = () => {

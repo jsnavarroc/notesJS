@@ -21,10 +21,10 @@ class CustomerNoteContainer extends Component {
         this.props.fetchNotes();
     }
     renderBody = (note) => {
-        if(note.idNote !== undefined ) {
+        if(note.id !== undefined ) {
             return(
                 <Route
-                    path="/note/:idNote/edit"
+                    path="/note/:id/edit"
                     children={
 
                         ({ match }) => {
@@ -57,7 +57,7 @@ class CustomerNoteContainer extends Component {
 }
 
 CustomerNoteContainer.propTypes = {
-    idNote: PropTypes.string,
+    id: PropTypes.string,
     fetchNotes: PropTypes.func,
     note: PropTypes.object,
 };

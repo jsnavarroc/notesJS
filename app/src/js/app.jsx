@@ -9,7 +9,7 @@ import CustomerNoteContainer from './NoteApp/Components/Containers/CustomerNoteC
 class App extends Component {
   rederHome = () => <HomeContainer/>
   rederNoteList = () => <NoteListContainer/>
-  renderNotesContainer= (props) => ( <CustomerNoteContainer idNote={props.match.params.idNote}/>)
+  renderNotesContainer= (props) => ( <CustomerNoteContainer id={props.match.params.id}/>)
   rederError = () => <h1>Error404</h1>
 
   render() {
@@ -19,7 +19,7 @@ class App extends Component {
             <Switch>
                 <Route exact path = "/home" component = {this.rederHome}/>
                 <Route exact path = "/" component = {this.rederNoteList}/>
-                <Route path = "/note/:idNote" render = {(props) => this.renderNotesContainer(props)}/>
+                <Route path = "/note/:id" render = {(props) => this.renderNotesContainer(props)}/>
                 <Route component = {this.rederError}/>
             </Switch>
         </Router>
