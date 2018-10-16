@@ -4,4 +4,4 @@ import { apiPost } from '../api';
 import { urlNotes } from '../api/urls';
 
 export const insertNotes = createAction(INSERT_NOTES,
-    note => apiPost(urlNotes, note)() );
+    note => apiPost(urlNotes, note)());

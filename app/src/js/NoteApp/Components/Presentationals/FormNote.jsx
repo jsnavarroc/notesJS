@@ -61,7 +61,7 @@ const FormNote = (props) => {
 FormNote.propTypes = {
     noteTitle: PropTypes.string,
     noteText: PropTypes.string,
-    idNote: PropTypes.string,
+    id: PropTypes.string,
 };
 
 const NoteEditForm = reduxForm({ form:'NoteEdit', validate })(FormNote);

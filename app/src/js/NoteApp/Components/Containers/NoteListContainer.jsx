@@ -17,32 +17,34 @@ import { getNotes } from '../../../redux/selectors/notes';
 
 class NoteListContainer extends Component {
     componentDidMount() {
-        this.props.fetchNotes();
+        if (this.props.notes.length === 0) {
+            this.props.fetchNotes();
+        }
     }
-    onSelectionNote(idNote) {
-        console.log('ID NOTA:', idNote);
+    onSelectionNote(id) {
+        console.log('ID NOTA:', id);
 
     }
     onTransformNotes(notes) {
-        const index =  notes.length;
+        const index = notes.length;
         let colNote1 = [];
         let colNote2 = [];
-        if((index % 2)!==0) {
-             colNote1 = notes.splice(0,  (index/2)+1);
-             colNote2 = notes.splice( 0,  (index-1));
-        }else{
-            colNote1 = notes.splice(0,  (index/2));
-            colNote2 = notes.splice( 0,  (index));
+        if ((index % 2) !== 0) {
+            colNote1 = notes.splice(0, (index / 2) + 1);
+            colNote2 = notes.splice(0, (index - 1));
+        } else {
+            colNote1 = notes.splice(0, (index / 2));
+            colNote2 = notes.splice(0, (index));
         }
         const NotesTotal = [colNote1, colNote2];
         return NotesTotal;
 
     }
-    renderAddNoteAction = () => ( <AddNoteButton/> )
+    renderAddNoteAction = () => (<AddNoteButton />)
 
     renderNav = (addNote) => (
         <div>
-            <Nav addNote = {addNote}/>
+            <Nav addNote={addNote} />
         </div>
     )
 
@@ -50,7 +52,7 @@ class NoteListContainer extends Component {
         <div>
             <NoteList
                 notes={this.onTransformNotes(notes)}
-                onSelectionNote = {this.onSelectionNote}
+                onSelectionNote={this.onSelectionNote}
             />
         </div>
     )
@@ -58,30 +60,28 @@ class NoteListContainer extends Component {
     render() {
         const { notes } = this.props;
         return (
-           <AppFrame
-            nav= {this.renderNav(this.renderAddNoteAction)}
-            body= {this.renderBody(notes)}
-           />
+            <AppFrame
+                nav={this.renderNav(this.renderAddNoteAction)}
+                body={this.renderBody(notes)}
+            />
         );
     }
 }
 
 NoteListContainer.propTypes = {
-    fetchNotes: PropTypes.func.isRequired,
-    notes: PropTypes.array.isRequired,
+    fetchNotes: PropTypes.func,
+    notes: PropTypes.array,
 };
 
-// NoteListContainer.defaultProps = {
-//     notes: [],
-// };
+NoteListContainer.defaultProps = {
+    notes: [],
+};
+
 const mapDispatchToProps = { fetchNotes };
 
-const mapStateToProps = (state) => {
-   return (
-        {
-            notes: getNotes(state),
-        }
-    );
-};
+const mapStateToProps = (state) => ({
+    notes: getNotes(state),
+});
+
 const NoteListConect = connect(mapStateToProps, mapDispatchToProps)(NoteListContainer);
 export default withRouter(NoteListConect);

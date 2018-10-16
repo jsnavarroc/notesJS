@@ -7,15 +7,15 @@ const style = {
     marginRight: 20,
   };
 
-const Buttons = ({ idNote, history }) => {
+const Buttons = ({ id, history }) => {
     return(
         <div>
-            <Link to={`/note/${idNote}/edit`}>
+            <Link to={`/note/${id}/edit`}>
                 <FloatingActionButton mini={true} style={style} backgroundColor = "#34495E" >
                     <ContentUpdate />
                 </FloatingActionButton>
             </Link>
-            <Link to={`/note/${idNote}/delet`}>
+            <Link to={`/note/${id}/delet`}>
                 <FloatingActionButton mini={true} style={style} backgroundColor = "#2ECC71">
                     <ContentAdd />
                 </FloatingActionButton>

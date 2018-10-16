@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import FlatButton from 'material-ui/FlatButton';
-import Dialog from 'material-ui/Dialog';
+import { FlatButton, Dialog } from 'material-ui';
 import NoteForm from './NoteForm.jsx';
 import { SubmissionError } from 'redux-form';
 import PropTypes from 'prop-types';
@@ -8,7 +7,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 // Actions
 // import { insertNotes } from '../../../../redux/actions/insertNotes';
-import { fetchNotes } from '../../../../redux/actions/fetchNotes';
+import { insertNotes } from '../../../../redux/actions/insertNotes';
 // Selector
 import { getNotes } from '../../../../redux/selectors/notes';
 
@@ -19,34 +18,33 @@ class AddModalNote extends Component {
             open: props.open,
         };
     }
-    componentDidMount() {
-        this.props.fetchNotes();
-    }
+
     handleSubmit = values => {
-        const { totaNotes } =  this.props;
-        values = { ...values, idNote:(totaNotes+1) };
-             return this.props.insertNotes(values).then( r => {
-                 if (r.error) {
-                     throw new SubmissionError(r.payload);
-                 }
-             });
+        debugger;
+        const totaNotes = this.props.notes.length;
+        const valuesAux = { ...values, id: 'n' + (totaNotes + 1) };
+        return this.props.insertNotes(valuesAux).then(r => {
+            if (r.error) {
+                throw new SubmissionError(r.payload);
+            }
+        });
     };
 
     render() {
-       const { handleClose } =  this.props;
+        const { handleClose } = this.props;
         const actions = [
-			<FlatButton
-				label="Cancel"
-				primary={true}
-				onClick={handleClose}
-			/>,
-			<FlatButton
-				label="Add"
-				primary={true}
-				keyboardFocused={true}
-				onClick={handleClose}
-			/>,
-         ];
+            <FlatButton
+                label="Cancel"
+                primary={true}
+                onClick={handleClose}
+            />,
+            <FlatButton
+                label="Add"
+                primary={true}
+                keyboardFocused={true}
+                onClick={handleClose}
+            />,
+        ];
         return (
             <div>
                 <Dialog
@@ -56,28 +54,24 @@ class AddModalNote extends Component {
                     open={this.state.open}
                     onRequestClose={handleClose}
                 >
-                        Create a new note<br />
+                    Create a new note<br />
                     {/*FORMULARIO !!!  */}
                     <NoteForm onSubmit={this.handleSubmit} />
                 </Dialog>
             </div>
         );
-}
+    }
 }
 
 AddModalNote.propTypes = {
-    insertNotes: PropTypes.func.isRequired,
-    fetchNotes: PropTypes.func.isRequired,
-    notes: PropTypes.array.isRequired,
+    insertNotes: PropTypes.func,
+    fetchNotes: PropTypes.func,
+    notes: PropTypes.array,
 };
 
-const mapStateToProps = (state) => {
-    return (
-         {
-             notes: getNotes(state),
-         }
-     );
- };
-const AddModalNoteConect = connect(mapStateToProps, { fetchNotes })(AddModalNote);
+const mapStateToProps = (state) => ({
+    notes: getNotes(state),
+});
+const AddModalNoteConect = connect(mapStateToProps, { insertNotes })(AddModalNote);
 export default AddModalNoteConect;
 // Componente modal para agregar notas.

@@ -1,7 +1,12 @@
 import { createSelector } from 'reselect';
 
-export const getNotes = state => state.notes;
-export const getCustomerByIdNote = createSelector(
-    (state, props) =>  state.notes.find(note => note.idNote === props.idNote),
+const getNotes = state => [...state.notes];
+const getCustomerByIdNote = createSelector(
+    (state, props) =>  state.notes.find(note => note.id === props.id),
     note => note
 );
+
+export {
+    getNotes,
+    getCustomerByIdNote,
+};
